@@ -343,4 +343,3 @@ class MainFrame extends JFrame
 }
 
 
-// Add a line of comments.

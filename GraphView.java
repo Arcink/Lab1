@@ -68,6 +68,3 @@ public class GraphView {
 	    osw.flush();
 	}
 }
-
-
-// Add a line of comments.

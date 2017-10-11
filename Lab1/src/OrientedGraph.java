@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.Stack;
-// change
+// change b2
 public class OrientedGraph 
 {
 	public class Node 

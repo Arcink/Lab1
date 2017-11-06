@@ -299,7 +299,7 @@ public class OrientedGraph
     		for (int i = 0; i < addNow; i++)
     			graph[i][i] = 0;
         int[] mindist = new int[addNow];
-        // ¸Ã½ÚµãÊÇ·ñÒÑ¾­ÕÒµ½×î¶ÌÂ·¾¶
+        // ï¿½Ã½Úµï¿½ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
         int vs = (int) map.get(word1);
         Integer nearest = Integer.MAX_VALUE / 2;
         Integer min = Integer.MAX_VALUE / 2;
@@ -311,10 +311,10 @@ public class OrientedGraph
             tmpDist[i] = mindist[i];
         }
         find[vs] = true;
-        for (int i = 1; i < addNow; i++)     //Ñ­»·À©Õ¹n-1´Î 
+        for (int i = 1; i < addNow; i++)     //Ñ­ï¿½ï¿½ï¿½ï¿½Õ¹n-1ï¿½ï¿½ 
         {
         		min = Integer.MAX_VALUE;
-            for (int j = 0; j < addNow; j++)    //Ñ°ÕÒÎ´±»À©Õ¹µÄÈ¨Öµ×îÐ¡µÄ¶¥µã 
+            for (int j = 0; j < addNow; j++)    //Ñ°ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½È¨Öµï¿½ï¿½Ð¡ï¿½Ä¶ï¿½ï¿½ï¿½ 
             {
                 if (find[j]==false && mindist[j]<min)
                 {
@@ -323,7 +323,7 @@ public class OrientedGraph
                 }
             } 
             find[nearest] = true;
-            for(int k = 0; k < addNow; k++)   //¸üÐÂdistÊý×éµÄÖµºÍÂ·¾¶µÄÖµ 
+            for(int k = 0; k < addNow; k++)   //ï¿½ï¿½ï¿½ï¿½distï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½Öµ 
             {
                 if (find[k]==false && graph[nearest][k] > 0 && min + graph[nearest][k] < mindist[k])
                 {
@@ -348,9 +348,9 @@ public class OrientedGraph
         		reverseMap.put(i, mVex[i].ivex);
         Stack<Integer> path = new Stack<Integer>();
         Integer[] vistedIf = new Integer[addNow];
-        for (int i = 0; i < addNow; i++)			// ¶ÔÃ¿Ò»¸öµãÑ°ÕÒÂ·¾¶
+        for (int i = 0; i < addNow; i++)			// ï¿½ï¿½Ã¿Ò»ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½ï¿½Â·ï¿½ï¿½
         {
-        		if (i != (int) map.get(word1))		// Æðµã²»ÎªÖÕµã
+        		if (i != (int) map.get(word1))		// ï¿½ï¿½ã²»Îªï¿½Õµï¿½
         		{
 		        	for (int k = 0; k < addNow; k++)
 		        			vistedIf[k] = 0;
@@ -362,7 +362,7 @@ public class OrientedGraph
 	        			{
 	        				if (toShowPath[path.peek()][x] != 0 && vistedIf[x] == 0)
 	        				{
-	        					if (x == i)			// ÕÒµ½ÁË
+	        					if (x == i)			// ï¿½Òµï¿½ï¿½ï¿½
 	        					{
 	        						result += word1 + "\t->\t" + mVex[i].ivex + ": \t";
 	        						for (int m = 0; m < path.size(); m++)
@@ -416,7 +416,7 @@ public class OrientedGraph
     		for (int i = 0; i < addNow; i++)
     			graph[i][i] = 0;
         int[] mindist = new int[addNow];
-        // ¸Ã½ÚµãÊÇ·ñÒÑ¾­ÕÒµ½×î¶ÌÂ·¾¶
+        // ï¿½Ã½Úµï¿½ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
         int vs = (int) map.get(word1);
         Integer nearest = Integer.MAX_VALUE / 2;
         Integer min = Integer.MAX_VALUE / 2;
@@ -428,10 +428,10 @@ public class OrientedGraph
             tmpDist[i] = mindist[i];
         }
         find[vs] = true;
-        for (int i = 1; i < addNow; i++)     //Ñ­»·À©Õ¹n-1´Î 
+        for (int i = 1; i < addNow; i++)     //Ñ­ï¿½ï¿½ï¿½ï¿½Õ¹n-1ï¿½ï¿½ 
         {
         		min = Integer.MAX_VALUE;
-            for (int j = 0; j < addNow; j++)    //Ñ°ÕÒÎ´±»À©Õ¹µÄÈ¨Öµ×îÐ¡µÄ¶¥µã 
+            for (int j = 0; j < addNow; j++)    //Ñ°ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½È¨Öµï¿½ï¿½Ð¡ï¿½Ä¶ï¿½ï¿½ï¿½ 
             {
                 if (find[j]==false && mindist[j]<min)
                 {
@@ -440,7 +440,7 @@ public class OrientedGraph
                 }
             } 
             find[nearest] = true;
-            for(int k = 0; k < addNow; k++)   //¸üÐÂdistÊý×éµÄÖµºÍÂ·¾¶µÄÖµ 
+            for(int k = 0; k < addNow; k++)   //ï¿½ï¿½ï¿½ï¿½distï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½Öµ 
             {
                 if (find[k]==false && graph[nearest][k] > 0 && min + graph[nearest][k] < mindist[k])
                 {
@@ -460,7 +460,7 @@ public class OrientedGraph
         Integer[] vistedIf = new Integer[addNow];
         	// i =   (int) map.get(word2)
         	Integer word2Num = (int) map.get(word2);
-    		if (word2Num != (int) map.get(word1))		// Æðµã²»ÎªÖÕµã
+    		if (word2Num != (int) map.get(word1))		// ï¿½ï¿½ã²»Îªï¿½Õµï¿½
     		{
 	        	for (int k = 0; k < addNow; k++)
 	        			vistedIf[k] = 0;
@@ -472,7 +472,7 @@ public class OrientedGraph
         			{
         				if (toShowPath[path.peek()][x] != 0 && vistedIf[x] == 0)
         				{
-        					if (x == word2Num)			// ÕÒµ½ÁË
+        					if (x == word2Num)			// ï¿½Òµï¿½ï¿½ï¿½
         					{
         						result += word1 + "\t->\t" + mVex[word2Num].ivex + ": \t";
         						for (int m = 0; m < path.size(); m++)

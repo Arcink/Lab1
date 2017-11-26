@@ -1,4 +1,4 @@
-import java.awt.*;
+ï»¿import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,7 +25,7 @@ class MainFrame extends JFrame
 {
 	private static final long serialVersionUID = 1L;
 	private TextManager textManager;
-	private OrientedGraph orientedGraph;
+	private GraphC graphC;
 	private GraphView graphView;
 	private JButton textChooseButton;						//
 	private JButton creatGraphButton;
@@ -42,14 +42,14 @@ class MainFrame extends JFrame
 		// initialize field
 		textManager = new TextManager();
 		graphView = new GraphView();
-		textChooseButton = new JButton("´ò¿ªÎÄ±¾ÎÄ¼þ");
-		creatGraphButton = new JButton("Éú³ÉÓÐÏòÍ¼");
-		queryWordButton = new JButton("²éÑ¯ÇÅ½Ó´Ê");
-		creatTextButton = new JButton("Éú³ÉÐÂÎÄ±¾");
-		queryPathButton = new JButton("²éÑ¯×î¶ÌÂ·¾¶");
-		ranWalkButton = new JButton("Ëæ»úÓÎ×ß");
+		textChooseButton = new JButton("ï¿½ï¿½ï¿½Ä±ï¿½ï¿½Ä¼ï¿½");
+		creatGraphButton = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼");
+		queryWordButton = new JButton("ï¿½ï¿½Ñ¯ï¿½Å½Ó´ï¿½");
+		creatTextButton = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½");
+		queryPathButton = new JButton("ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Â·ï¿½ï¿½");
+		ranWalkButton = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		// set frame
-		setTitle("Ö÷½çÃæ");
+		setTitle("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		setLocationByPlatform(true);
 		mainFrameHeight = 400;
 		mainFrameWidth = 240;
@@ -91,7 +91,7 @@ class MainFrame extends JFrame
 		    public void mouseClicked(java.awt.event.MouseEvent e) 
 		    {
 			    JFileChooser jfChooser = new JFileChooser(); 
-			    jfChooser.setDialogTitle("Ñ¡ÔñÎÄ±¾"); 
+			    jfChooser.setDialogTitle("Ñ¡ï¿½ï¿½ï¿½Ä±ï¿½"); 
 			    jfChooser.setFileFilter(new FileFilter() 
 			    { 
 			        public boolean accept(File f) 
@@ -100,7 +100,7 @@ class MainFrame extends JFrame
 				        		return true; 
 				    	    return false; 
 			        }
-			        public String getDescription() { return "UnicodeÎÄ±¾ÎÄ¼þ(*.txt)"; } 
+			        public String getDescription() { return "Unicodeï¿½Ä±ï¿½ï¿½Ä¼ï¿½(*.txt)"; } 
 			    }); 
 			    if (JFileChooser.APPROVE_OPTION == jfChooser.showOpenDialog(null)) //user open a file
 			    { 
@@ -108,7 +108,7 @@ class MainFrame extends JFrame
 		            boolean nextStep =  textManager.manageText(path);
 		            if (nextStep == false)  // file not accepted
 		            {
-			            	JOptionPane.showMessageDialog(null, "ÎÄ±¾ÖÐÃ»ÓÐµ¥´Ê»òÕß·ÇUnicode±àÂë");
+			            	JOptionPane.showMessageDialog(null, "ï¿½Ä±ï¿½ï¿½ï¿½Ã»ï¿½Ðµï¿½ï¿½Ê»ï¿½ï¿½ß·ï¿½Unicodeï¿½ï¿½ï¿½ï¿½");
 			        		creatGraphButton.setEnabled(false);
 			        		queryWordButton.setEnabled(false);
 			        		creatTextButton.setEnabled(false);
@@ -117,14 +117,14 @@ class MainFrame extends JFrame
 		            }
 		            else  // other function can be used
 		            {
-			            	JOptionPane.showMessageDialog(null, "ÎÄ¼þÊäÈëÍê³É");
-			            	orientedGraph = new OrientedGraph(textManager.getWordNum());
+			            	JOptionPane.showMessageDialog(null, "ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+			            	graphC = new GraphC(textManager.getWordNum());
 			            List<String> adjacentWordLst = textManager.getWordPair();
 			            for (int i = 0; i < adjacentWordLst.size() - 1; i += 2)
-			    				orientedGraph.add(adjacentWordLst.get(i), adjacentWordLst.get(i + 1));
-			            orientedGraph.print();
-			    			orientedGraph.getTriple(adjacentWordLst);
-			    			orientedGraph.generateBridge();
+			    				graphC.add(adjacentWordLst.get(i), adjacentWordLst.get(i + 1));
+			            graphC.print();
+			    			graphC.getTriple(adjacentWordLst);
+			    			graphC.generateBridge();
 			        		creatGraphButton.setEnabled(true);
 			        		queryWordButton.setEnabled(true);
 			        		creatTextButton.setEnabled(true);
@@ -142,8 +142,8 @@ class MainFrame extends JFrame
 		{ 
 		    public void mouseClicked(java.awt.event.MouseEvent e) 
 		    {
-		    	graphView.showDirectedGraph(orientedGraph.getmVex(), orientedGraph.getAddNow());
-				JOptionPane.showMessageDialog(null, "Í¼ÏñÒÑ±£´æÖÁ±¾³ÌÐò¸ùÄ¿Â¼graph.png");
+		    	graphView.showDirectedGraph(graphC.getmVex(), graphC.getAddNow());
+				JOptionPane.showMessageDialog(null, "Í¼ï¿½ï¿½ï¿½Ñ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼graph.png");
 		    }
 		});
 	}
@@ -154,7 +154,7 @@ class MainFrame extends JFrame
 		{
 			public void mouseClicked(java.awt.event.MouseEvent e)
 			{
-				JFrame jfQueryWord = new JFrame("²éÑ¯ÇÅ½Ó´Ê");
+				JFrame jfQueryWord = new JFrame("ï¿½ï¿½Ñ¯ï¿½Å½Ó´ï¿½");
 				JPanel bigPanel = new JPanel();
 				bigPanel.setLayout(null);
 				JPanel panel1 = new JPanel();
@@ -166,12 +166,12 @@ class MainFrame extends JFrame
 				jfQueryWord.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				jfQueryWord.setVisible(true);
 				jfQueryWord.setSize(500, 300);
-				JTextField jtQueryWord1 = new JTextField("ÇëÊäÈë´Ê1");
+				JTextField jtQueryWord1 = new JTextField("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1");
 				jtQueryWord1.setMinimumSize(new Dimension(30, 15));
-				JTextField jtQueryWord2 = new JTextField("ÇëÊäÈë´Ê2");
+				JTextField jtQueryWord2 = new JTextField("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2");
 				jtQueryWord2.setMinimumSize(new Dimension(30, 15));
 				JTextField jtQueryWordResult = new JTextField();
-				JButton jfQueryButton = new JButton("È·¶¨");
+				JButton jfQueryButton = new JButton("È·ï¿½ï¿½");
 				jtQueryWordResult.setSize(460, 150);
 				jtQueryWordResult.setEditable(false);
 				
@@ -191,11 +191,11 @@ class MainFrame extends JFrame
 					{
 						if (!jtQueryWord1.getText().isEmpty() && !jtQueryWord2.getText().isEmpty()) 
 						{
-							String result = orientedGraph.queryBridgeWord(jtQueryWord1.getText(), jtQueryWord2.getText());
+							String result = graphC.queryBridgeWord(jtQueryWord1.getText(), jtQueryWord2.getText());
 							if (result != null)
-								jtQueryWordResult.setText(result + "\tÄã²Â¶ÔÁËÂð£¿");
+								jtQueryWordResult.setText(result + "\tï¿½ï¿½Â¶ï¿½ï¿½ï¿½ï¿½ï¿½");
 							else
-								jtQueryWordResult.setText("tan90¡ã");
+								jtQueryWordResult.setText("tan90ï¿½ï¿½");
 						}
 					}
 				});
@@ -209,23 +209,23 @@ class MainFrame extends JFrame
 		{
 			public void mouseClicked(java.awt.event.MouseEvent e)
 			{
-				JFrame jfQueryWord = new JFrame("Éú³ÉÐÂÎÄ±¾");
+				JFrame jfQueryWord = new JFrame("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½");
 				JPanel bigPanel = new JPanel();
 				bigPanel.setLayout(new BoxLayout(bigPanel, BoxLayout.Y_AXIS));
 				JPanel panel1 = new JPanel();
 				panel1.setLayout(new BoxLayout(panel1, BoxLayout.X_AXIS));
 				JScrollPane panel2 = new JScrollPane();
-				panel2.setBorder(BorderFactory.createTitledBorder("Äã²Â¶ÔÁËÂð£¿"));
+				panel2.setBorder(BorderFactory.createTitledBorder("ï¿½ï¿½Â¶ï¿½ï¿½ï¿½ï¿½ï¿½"));
 				panel2.setLayout(null);
 				jfQueryWord.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				jfQueryWord.setVisible(true);
 				jfQueryWord.setSize(840, 400);
 				jfQueryWord.setResizable(false);
-				JTextField jtQueryWord1 = new JTextField("Ëæ±ãÊäÈëµãÊ²Ã´");
+				JTextField jtQueryWord1 = new JTextField("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê²Ã´");
 				jtQueryWord1.setMinimumSize(new Dimension(300, 25));
 				jtQueryWord1.setMaximumSize(new Dimension(300, 25));
 				JTextArea jtQueryWordResult = new JTextArea();
-				JButton jfQueryButton = new JButton("È·¶¨");
+				JButton jfQueryButton = new JButton("È·ï¿½ï¿½");
 				jtQueryWordResult.setSize(800, 300);
 				jtQueryWordResult.setLocation(14, 15);
 				jtQueryWordResult.setEditable(false);
@@ -245,7 +245,7 @@ class MainFrame extends JFrame
 							String result = new String();
 							try 
 							{
-								result = orientedGraph.generateNewString(jtQueryWord1.getText());
+								result = graphC.generateNewString(jtQueryWord1.getText());
 							} 
 							catch (IOException e1) 
 							{
@@ -267,17 +267,17 @@ class MainFrame extends JFrame
 		{
 			public void mouseClicked(java.awt.event.MouseEvent e)
 			{
-				JFrame jfQueryWord = new JFrame("²éÑ¯×î¶ÌÂ·¾¶");
+				JFrame jfQueryWord = new JFrame("ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Â·ï¿½ï¿½");
 				jfQueryWord.setLayout(null);
 				jfQueryWord.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				jfQueryWord.setSize(715, 700);
 				jfQueryWord.setResizable(false);
 				
-				JTextField jtQueryWord1 = new JTextField("ÇëÊäÈë´Ê1");
+				JTextField jtQueryWord1 = new JTextField("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1");
 				jtQueryWord1.setBounds(75, 20, 80, 20);
-				JTextField jtQueryWord2 = new JTextField("ÇëÊäÈë´Ê2");
+				JTextField jtQueryWord2 = new JTextField("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2");
 				jtQueryWord2.setBounds(240, 20, 80, 20);
-				JButton jfQueryButton = new JButton("È·¶¨");
+				JButton jfQueryButton = new JButton("È·ï¿½ï¿½");
 				jfQueryButton.setBounds(405, 10, 80, 30);
 				JTextArea jtQueryWordResult = new JTextArea();
 				jtQueryWordResult.setBounds(15, 60, 670, 560);
@@ -297,9 +297,9 @@ class MainFrame extends JFrame
 						{
 							String result = new String();
 							if (jtQueryWord2.getText().isEmpty())
-								result = orientedGraph.dijkstra(jtQueryWord1.getText());
+								result = graphC.dijkstra(jtQueryWord1.getText());
 							else
-								result = orientedGraph.dijkstra(jtQueryWord1.getText(), jtQueryWord2.getText());
+								result = graphC.dijkstra(jtQueryWord1.getText(), jtQueryWord2.getText());
 							jtQueryWordResult.setText(result);
 							System.out.println(result);
 						}
@@ -315,7 +315,7 @@ class MainFrame extends JFrame
 		{ 
 		    public void mouseClicked(java.awt.event.MouseEvent e) 
 		    {
-				JFrame rwFrame = new JFrame("Ëæ»úÓÎ×ß");
+				JFrame rwFrame = new JFrame("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 				rwFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				rwFrame.setSize(300, 180);
 				rwFrame.setLocationByPlatform(true);
@@ -323,7 +323,7 @@ class MainFrame extends JFrame
 				jta.setBounds(20, 20, 300, 180);
 				jta.setEditable(false);
 				jta.setLineWrap(true);
-				String ret = orientedGraph.randomWalk();
+				String ret = graphC.randomWalk();
 				jta.setText(" " + ret);
 				String savePath = System.getProperty("user.dir") + "\\RandomWalk.txt";
 				FileOutputStream fos;

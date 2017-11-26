@@ -18,7 +18,7 @@ public class GraphView {
 				+ dotPath + " -o " + rootPath + "\\graph.png";
 	} 
 	
-	public void showDirectedGraph(OrientedGraph.Node[] mVex, int addNow)
+	public void showDirectedGraph(Node[] mVex, int addNow)
 	{
 
 		try {
@@ -35,11 +35,11 @@ public class GraphView {
 	}
 	
 	// according to graph, write a .dot and save
-	private void createDot(OrientedGraph.Node[] mVex, int addNow) throws IOException
+	private void createDot(Node[] mVex, int addNow) throws IOException
 	{
 		String content = "\n";
 		int i;
-		OrientedGraph.Node tmp;
+		Node tmp;
 		// write script
 		content += "digraph myGraph {\n";
 		// node
